@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-8">
+  <div class="my-8">
     <v-form>
       <v-text-field
         label="Search gif..."
