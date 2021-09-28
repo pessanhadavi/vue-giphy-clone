@@ -8,7 +8,7 @@
     <v-row>
       <v-col cols="12">
         <div class="d-flex flex-wrap justify-center">
-          <Gif />
+          <Gif v-for="gif in gifs" :key="gif.id" :gif="gif" />
         </div>
       </v-col>
     </v-row>
@@ -18,12 +18,14 @@
 <script>
 import SearchInput from "@/components/SearchInput.vue";
 import Gif from "@/components/Gif.vue";
+import { mapState } from "vuex";
 
 export default {
   components: {
     SearchInput,
     Gif,
   },
+  computed: mapState(["gifs"]),
 };
 </script>
 
