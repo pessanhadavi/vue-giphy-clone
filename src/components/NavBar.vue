@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app color="purple darken-4" dark>
+  <v-app-bar id="nav-bar" app color="purple darken-4" dark>
     <div class="d-flex align-center">
       <h1>Giphy-like</h1>
     </div>
@@ -12,3 +12,9 @@
     </v-btn>
   </v-app-bar>
 </template>
+
+<style lang="scss" scoped>
+#nav-bar {
+  z-index: 1000;
+}
+</style>
