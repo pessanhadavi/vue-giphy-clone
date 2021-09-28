@@ -7,6 +7,10 @@
     </v-row>
     <v-row>
       <v-col cols="12">
+        <div class="pl-10">
+          <h2 v-if="gifSearch">Results for: "{{ gifSearch }}"</h2>
+          <h2 v-else>Find that gif you are looking for!</h2>
+        </div>
         <div class="d-flex flex-wrap justify-center">
           <Gif v-for="gif in gifs" :key="gif.id" :gif="gif" />
         </div>
@@ -25,7 +29,7 @@ export default {
     SearchInput,
     Gif,
   },
-  computed: mapState(["gifs"]),
+  computed: mapState(["gifs", "gifSearch"]),
 };
 </script>
 
