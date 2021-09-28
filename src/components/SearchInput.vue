@@ -3,6 +3,7 @@
     <v-form>
       <v-text-field
         label="Search gif..."
+        color="purple darken-4"
         v-model="querySearch"
         @input="search"
       />
