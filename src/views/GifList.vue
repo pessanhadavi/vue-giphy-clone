@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="d-flex justify-center">
-      <v-col cols="5">
+      <v-col cols="6">
         <SearchInput />
       </v-col>
     </v-row>
