@@ -15,11 +15,15 @@ export default {
   data() {
     return {
       querySearch: "",
+      limit: 32,
     };
   },
   methods: {
     search() {
-      this.$store.dispatch("fetchGifs", this.querySearch);
+      this.$store.dispatch("fetchGifs", {
+        querySearch: this.querySearch,
+        limit: this.limit,
+      });
     },
   },
 };

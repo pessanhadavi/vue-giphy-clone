@@ -5,7 +5,7 @@ const apiClient = axios.create({
 });
 
 export default {
-  getGifs(query) {
-    return apiClient.get(query + "&limit=32");
+  getGifs(query, limit) {
+    return apiClient.get(query + "&limit=" + limit);
   },
 };
