@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-8">
     <v-form>
       <v-text-field
         label="Search gif..."
@@ -28,5 +28,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped></style>
