@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="d-flex justify-center">
       <v-col cols="6">
-        <SearchInput />
+        <SearchForm />
       </v-col>
     </v-row>
     <v-row>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import SearchInput from "@/components/SearchInput.vue";
+import SearchForm from "@/components/SearchForm.vue";
 import Gif from "@/components/Gif.vue";
 import BaseButton from "@/components/BaseButton.vue";
 
@@ -35,7 +35,7 @@ import { mapState } from "vuex";
 
 export default {
   components: {
-    SearchInput,
+    SearchForm,
     Gif,
     BaseButton,
   },
