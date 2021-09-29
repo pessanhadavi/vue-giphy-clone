@@ -13,12 +13,18 @@ export default new Vuex.Store({
     SET_GIFS(state, gifs) {
       state.gifs = gifs;
     },
+    SET_GIF_SEARCH(state, gifSearch) {
+      state.gifSearch = gifSearch;
+    },
   },
   actions: {
     fetchGifs({ commit }, { querySearch, limit }) {
       return GifService.getGifs(querySearch, limit).then((response) => {
         commit("SET_GIFS", response.data.data);
       });
+    },
+    updateGifSearch({ commit }, gifSearch) {
+      commit("SET_GIF_SEARCH", gifSearch);
     },
   },
 });

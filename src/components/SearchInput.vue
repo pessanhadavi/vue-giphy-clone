@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     search() {
-      this.$store.state.gifSearch = this.querySearch;
+      this.$store.dispatch("updateGifSearch", this.querySearch);
       this.$store.dispatch("fetchGifs", {
         querySearch: this.querySearch,
         limit: this.limit,
