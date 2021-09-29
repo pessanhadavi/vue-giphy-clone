@@ -7,24 +7,33 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     gifs: [],
-    gifSearch: "",
+    gifSearch: {
+      querySearch: "",
+      limit: 12,
+      offset: 0,
+    },
   },
   mutations: {
     SET_GIFS(state, gifs) {
       state.gifs = gifs;
     },
-    SET_GIF_SEARCH(state, gifSearch) {
-      state.gifSearch = gifSearch;
+    SET_GIF_SEARCH(state, querySearch) {
+      state.gifSearch.querySearch = querySearch;
     },
   },
   actions: {
-    fetchGifs({ commit }, { querySearch, limit, offset }) {
-      return GifService.getGifs(querySearch, limit, offset).then((response) => {
+    fetchGifs({ state, commit, dispatch }, { querySearch }) {
+      dispatch("updateGifSearch", querySearch);
+      return GifService.getGifs(
+        querySearch,
+        state.gifSearch.limit,
+        state.gifSearch.offset
+      ).then((response) => {
         commit("SET_GIFS", response.data.data);
       });
     },
-    updateGifSearch({ commit }, gifSearch) {
-      commit("SET_GIF_SEARCH", gifSearch);
+    updateGifSearch({ commit }, querySearch) {
+      commit("SET_GIF_SEARCH", querySearch);
     },
   },
 });

@@ -28,18 +28,13 @@ export default {
   },
   data() {
     return {
-      querySearch: "",
-      limit: 12,
-      offset: 0,
+      querySearch: this.$state.gifSearch.querySearch,
     };
   },
   methods: {
     search() {
-      this.$store.dispatch("updateGifSearch", this.querySearch);
       this.$store.dispatch("fetchGifs", {
         querySearch: this.querySearch,
-        limit: this.limit,
-        offset: this.offset,
       });
     },
   },

@@ -8,7 +8,9 @@
     <v-row>
       <v-col cols="12">
         <div class="pl-10">
-          <h2 v-if="gifSearch">Results for: "{{ gifSearch }}"</h2>
+          <h2 v-if="gifSearch.querySearch">
+            Results for: "{{ gifSearch.querySearch }}"
+          </h2>
           <h2 v-else>Find that gif you are looking for!</h2>
         </div>
         <div class="d-flex flex-wrap justify-center">
