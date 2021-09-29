@@ -17,13 +17,16 @@ export default new Vuex.Store({
     SET_GIFS(state, gifs) {
       state.gifs = gifs;
     },
-    SET_GIF_SEARCH(state, querySearch) {
+    SET_GIF_SEARCH_QUERY(state, querySearch) {
       state.gifSearch.querySearch = querySearch;
     },
   },
   actions: {
     fetchGifs({ state, commit, dispatch }, { querySearch }) {
-      dispatch("updateGifSearch", querySearch);
+      dispatch("updateGifSearch", {
+        element: querySearch,
+        kind: "query",
+      });
       return GifService.getGifs(
         querySearch,
         state.gifSearch.limit,
@@ -32,8 +35,12 @@ export default new Vuex.Store({
         commit("SET_GIFS", response.data.data);
       });
     },
-    updateGifSearch({ commit }, querySearch) {
-      commit("SET_GIF_SEARCH", querySearch);
+    updateGifSearch({ commit }, { element, kind }) {
+      switch (kind) {
+        case "query":
+          commit("SET_GIF_SEARCH_QUERY", element);
+          break;
+      }
     },
   },
 });
