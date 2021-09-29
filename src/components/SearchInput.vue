@@ -29,7 +29,8 @@ export default {
   data() {
     return {
       querySearch: "",
-      limit: 32,
+      limit: 12,
+      offset: 0,
     };
   },
   methods: {
@@ -38,6 +39,7 @@ export default {
       this.$store.dispatch("fetchGifs", {
         querySearch: this.querySearch,
         limit: this.limit,
+        offset: this.offset,
       });
     },
   },

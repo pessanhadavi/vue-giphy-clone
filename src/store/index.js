@@ -18,8 +18,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    fetchGifs({ commit }, { querySearch, limit }) {
-      return GifService.getGifs(querySearch, limit).then((response) => {
+    fetchGifs({ commit }, { querySearch, limit, offset }) {
+      return GifService.getGifs(querySearch, limit, offset).then((response) => {
         commit("SET_GIFS", response.data.data);
       });
     },
