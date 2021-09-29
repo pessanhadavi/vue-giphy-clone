@@ -16,6 +16,11 @@
         <div class="d-flex flex-wrap justify-center">
           <Gif v-for="gif in gifs" :key="gif.id" :gif="gif" />
         </div>
+        <v-row class="my-2">
+          <v-col cols="12" class="d-flex justify-center">
+            <BaseButton>Load More</BaseButton>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -24,12 +29,15 @@
 <script>
 import SearchInput from "@/components/SearchInput.vue";
 import Gif from "@/components/Gif.vue";
+import BaseButton from "@/components/BaseButton.vue";
+
 import { mapState } from "vuex";
 
 export default {
   components: {
     SearchInput,
     Gif,
+    BaseButton,
   },
   computed: mapState(["gifs", "gifSearch"]),
 };
