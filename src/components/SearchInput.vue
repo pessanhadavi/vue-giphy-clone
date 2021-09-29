@@ -28,14 +28,12 @@ export default {
   },
   data() {
     return {
-      querySearch: this.$state.gifSearch.querySearch,
+      querySearch: this.$store.state.gifSearch.querySearch,
     };
   },
   methods: {
     search() {
-      this.$store.dispatch("fetchGifs", {
-        querySearch: this.querySearch,
-      });
+      this.$store.dispatch("fetchGifs", this.querySearch);
     },
   },
   mounted() {
