@@ -39,14 +39,12 @@
 <script>
 import SearchForm from "@/components/SearchForm.vue"
 import Gif from "@/components/Gif.vue"
-import BaseButton from "@/components/BaseButton.vue"
 import { /*mapGetters,*/ mapState } from "vuex"
 
 export default {
   components: {
     SearchForm,
     Gif,
-    BaseButton,
   },
   // data() {
   //   return {
