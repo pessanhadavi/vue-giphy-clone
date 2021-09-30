@@ -29,8 +29,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    fetchGifs({ state, commit, dispatch }, querySearch) {
-      dispatch("updateGifSearch", querySearch)
+    async fetchGifs({ state, commit, dispatch }, querySearch) {
+      await dispatch("updateGifSearch", querySearch)
       return GifService.getGifs({
         query: querySearch,
         limit: state.gifSearch.limit,
@@ -40,8 +40,8 @@ export default new Vuex.Store({
       })
     },
 
-    fetchMoreGifs({ state, commit, dispatch }) {
-      dispatch("updateGifSearch", state.gifSearch.increaseOffset)
+    async fetchMoreGifs({ state, commit, dispatch }) {
+      await dispatch("updateGifSearch", state.gifSearch.increaseOffset)
       return GifService.getGifs({
         query: state.gifSearch.querySearch,
         limit: state.gifSearch.limit,
@@ -62,9 +62,9 @@ export default new Vuex.Store({
       }
     },
   },
-  getters: {
-    getGifsLength: (state) => {
-      return state.gifs.length
-    },
-  },
+  // getters: {
+  //   getGifsLength: (state) => {
+  //     return state.gifs.length
+  //   },
+  // },
 })
