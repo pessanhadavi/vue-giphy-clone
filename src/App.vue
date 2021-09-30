@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Navbar from "@/components/NavBar.vue";
-import GifList from "@/views/GifList.vue";
+import Navbar from "@/components/NavBar.vue"
+import GifList from "@/views/GifList.vue"
 
 export default {
   name: "App",
@@ -20,5 +20,5 @@ export default {
   data: () => ({
     //
   }),
-};
+}
 </script>

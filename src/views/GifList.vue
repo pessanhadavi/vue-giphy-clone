@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import SearchForm from "@/components/SearchForm.vue";
-import Gif from "@/components/Gif.vue";
-import BaseButton from "@/components/BaseButton.vue";
-import { mapGetters, mapState } from "vuex";
+import SearchForm from "@/components/SearchForm.vue"
+import Gif from "@/components/Gif.vue"
+import BaseButton from "@/components/BaseButton.vue"
+import { mapGetters, mapState } from "vuex"
 
 export default {
   components: {
@@ -53,20 +53,20 @@ export default {
       startIndex: -1,
       endIndex: 0,
       offsetIncrease: 12,
-    };
+    }
   },
   methods: {
     loadMore() {
-      this.startIndex += this.getGifsLength;
-      this.endIndex = this.startIndex + this.offsetIncrease;
-      this.$store.dispatch("fetchMoreGifs", this.offsetIncrease);
+      this.startIndex += this.getGifsLength
+      this.endIndex = this.startIndex + this.offsetIncrease
+      this.$store.dispatch("fetchMoreGifs", this.offsetIncrease)
     },
   },
   computed: {
     ...mapState(["gifs", "gifSearch"]),
     ...mapGetters(["getGifsLength"]),
   },
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

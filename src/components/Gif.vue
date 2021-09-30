@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Loader from "@/components/Loader.vue";
+import Loader from "@/components/Loader.vue"
 
 export default {
   components: {
@@ -19,7 +19,7 @@ export default {
   props: {
     gif: Object,
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

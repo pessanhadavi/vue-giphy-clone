@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import BaseButton from "@/components/BaseButton.vue";
+import BaseButton from "@/components/BaseButton.vue"
 
 export default {
   components: {
@@ -29,15 +29,15 @@ export default {
   data() {
     return {
       querySearch: this.$store.state.gifSearch.querySearch,
-    };
+    }
   },
   methods: {
     search() {
-      this.$store.dispatch("fetchGifs", this.querySearch);
+      this.$store.dispatch("fetchGifs", this.querySearch)
     },
   },
   mounted() {
-    this.search();
+    this.search()
   },
-};
+}
 </script>
