@@ -52,14 +52,13 @@ export default {
     return {
       startIndex: -1,
       endIndex: 0,
-      offsetIncrease: 12,
     }
   },
   methods: {
     loadMore() {
       this.startIndex += this.getGifsLength
       this.endIndex = this.startIndex + this.offsetIncrease
-      this.$store.dispatch("fetchMoreGifs", this.offsetIncrease)
+      this.$store.dispatch("fetchMoreGifs")
     },
   },
   computed: {

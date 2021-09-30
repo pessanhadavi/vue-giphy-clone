@@ -11,6 +11,7 @@ export default new Vuex.Store({
       querySearch: "",
       limit: 12,
       offset: 0,
+      increaseOffset: 12,
     },
   },
   mutations: {
@@ -23,16 +24,13 @@ export default new Vuex.Store({
     SET_GIF_SEARCH_QUERY(state, querySearch) {
       state.gifSearch.querySearch = querySearch
     },
-    SET_GIF_SEARCH_OFFSET(state, offset) {
-      state.gifSearch.offset += offset
+    SET_GIF_SEARCH_OFFSET(state) {
+      state.gifSearch.offset += state.gifSearch.increaseOffset
     },
   },
   actions: {
     fetchGifs({ state, commit, dispatch }, querySearch) {
-      dispatch("updateGifSearch", {
-        element: querySearch,
-        kind: "query",
-      })
+      dispatch("updateGifSearch", querySearch)
       return GifService.getGifs({
         query: querySearch,
         limit: state.gifSearch.limit,
@@ -42,11 +40,8 @@ export default new Vuex.Store({
       })
     },
 
-    fetchMoreGifs({ state, commit, dispatch }, offset) {
-      dispatch("updateGifSearch", {
-        element: offset,
-        kind: "offset",
-      })
+    fetchMoreGifs({ state, commit, dispatch }) {
+      dispatch("updateGifSearch", state.gifSearch.increaseOffset)
       return GifService.getGifs({
         query: state.gifSearch.querySearch,
         limit: state.gifSearch.limit,
@@ -56,13 +51,13 @@ export default new Vuex.Store({
       })
     },
 
-    updateGifSearch({ commit }, { element, kind }) {
-      switch (kind) {
-        case "query":
+    updateGifSearch({ commit }, element) {
+      switch (typeof element) {
+        case "string":
           commit("SET_GIF_SEARCH_QUERY", element)
           break
-        case "offset":
-          commit("SET_GIF_SEARCH_OFFSET", element)
+        case "number":
+          commit("SET_GIF_SEARCH_OFFSET")
           break
       }
     },
