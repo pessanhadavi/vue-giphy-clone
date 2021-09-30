@@ -48,7 +48,7 @@ export default new Vuex.Store({
         kind: "offset",
       });
       return GifService.getGifs({
-        query: state.querySearch,
+        query: state.gifSearch.querySearch,
         limit: state.gifSearch.limit,
         offset: state.gifSearch.offset,
       }).then((response) => {
