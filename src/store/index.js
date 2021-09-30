@@ -67,4 +67,9 @@ export default new Vuex.Store({
       }
     },
   },
+  getters: {
+    getGifsLength: (state) => {
+      return state.gifs.length;
+    },
+  },
 });
