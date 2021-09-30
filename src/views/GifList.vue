@@ -15,10 +15,20 @@
         </div>
         <div class="d-flex flex-wrap justify-center">
           <Gif v-for="gif in gifs" :key="gif.id" :gif="gif" />
+          <div
+            v-if="startIndex + 1 > this.getGifsLength"
+            class="d-flex flex-wrap justify-center"
+          >
+            <Gif
+              v-for="gif in gifs.slice(startIndex, endIndex)"
+              :key="gif.id"
+              :gif="gif"
+            />
+          </div>
         </div>
         <v-row class="my-2">
           <v-col cols="12" class="d-flex justify-center">
-            <BaseButton>Load More</BaseButton>
+            <BaseButton @click="loadMore">Load More</BaseButton>
           </v-col>
         </v-row>
       </v-col>
@@ -30,8 +40,7 @@
 import SearchForm from "@/components/SearchForm.vue";
 import Gif from "@/components/Gif.vue";
 import BaseButton from "@/components/BaseButton.vue";
-
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   components: {
@@ -39,7 +48,24 @@ export default {
     Gif,
     BaseButton,
   },
-  computed: mapState(["gifs", "gifSearch"]),
+  data() {
+    return {
+      startIndex: -1,
+      endIndex: 0,
+      offsetIncrease: 12,
+    };
+  },
+  methods: {
+    loadMore() {
+      this.startIndex += this.getGifsLength;
+      this.endIndex = this.startIndex + this.offsetIncrease;
+      this.$store.dispatch("fetchMoreGifs", this.offsetIncrease);
+    },
+  },
+  computed: {
+    ...mapState(["gifs", "gifSearch"]),
+    ...mapGetters(["getGifsLength"]),
+  },
 };
 </script>
 
