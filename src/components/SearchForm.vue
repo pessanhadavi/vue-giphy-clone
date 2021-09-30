@@ -23,7 +23,7 @@
 export default {
   data() {
     return {
-      querySearch: this.$store.state.gifSearch.querySearch,
+      querySearch: "",
     }
   },
   methods: {
