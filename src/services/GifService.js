@@ -2,6 +2,11 @@ import axios from "axios"
 
 const apiClient = axios.create({
   baseURL: `http://api.giphy.com/v1/gifs/`,
+  withCredentials: false,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
 })
 
 const getURL = (keyword, { query, limit, offset }) => {
